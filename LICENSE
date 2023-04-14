@@ -1,13 +1,14 @@
-/*******************************************************************************
-** Menno van Zaanen
-** mvzaanen@science.uva.nl    2001-2002
-** mvzaanen@uvt.nl            2002-
-********************************************************************************
-** Filename: LICENSE
-********************************************************************************
-** This file is part of the suffix tree package.
-********************************************************************************
-*******************************************************************************/
+///////////////////////////////////////////////////////////////////////////////*
+// Menno van Zaanen
+// mvzaanen@science.uva.nl    2001-2002
+// mvzaanen@uvt.nl            2002-2004
+// menno@ics.mq.edu.au        2004-
+////////////////////////////////////////////////////////////////////////////////
+// Filename: LICENSE
+////////////////////////////////////////////////////////////////////////////////
+// This file is part of the suffix tree package.
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
 
 
 Software License
@@ -24,7 +25,7 @@ the following terms and conditions:
 
 1. The license is only valid when you register as a user. If you have
 obtained a copy without registration, you must immediately register by
-sending an e-mail to mvzaanen@uvt.nl.
+sending an e-mail to menno@ics.mq.edu.au.
 2. User may only use the Software for educational or non-commercial
 research purposes.
 3. Users may make and use copies of the Software internally for their
@@ -44,10 +45,10 @@ proprietary rights of a third party and will not be liable to you for
 any consequential, incidental, or special damages or for any claim by
 any third party.
 6. Under this license, the copyright for the Software remains the
-joint property of the ILK Research Group at Tilburg University.
-Except as specifically authorized by the above licensing agreement,
-User may not use, copy or transfer this code, in any form, in whole or
-in part.
+joint property of the Centre for Language Technology at Macquarie
+University.  Except as specifically authorized by the above licensing
+agreement, User may not use, copy or transfer this code, in any form,
+in whole or in part.
 7. Licensers may at any time assign or transfer all or part of their
 interests in any rights to the Software, and to this license, to an
 affiliated or unaffiliated company or person.
@@ -59,13 +60,13 @@ License.
 reference to ``Menno van Zaanen'' should be given.
 
 For information about commercial licenses for the Software, contact
-mvzaanen@uvt.nl, or send your request in writing to
+menno@ics.mq.edu.au, or send your request in writing to
 
 Menno van Zaanen
-ILK / Computational Linguistics
-Tilburg University
-P.O. Box 90153
-5000 LE Tilburg
-The Netherlands
+Division of Information and Communication Sciences (ICS)
+Department of Computing
+Macquarie University
+2109 North Ryde, (Sydney), NSW
+Australia
 
-/* end of file: LICENSE */
+// end of file: LICENSE

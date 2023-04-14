@@ -1,19 +1,23 @@
-/*******************************************************************************
-** Menno van Zaanen
-** mvzaanen@science.uva.nl    2001-2002
-** mvzaanen@uvt.nl            2002-
-********************************************************************************
-** Filename: NEWS
-********************************************************************************
-** This file is part of the suffix tree package.
-********************************************************************************
-*******************************************************************************/
+///////////////////////////////////////////////////////////////////////////////*
+// Menno van Zaanen
+// mvzaanen@science.uva.nl    2001-2002
+// mvzaanen@uvt.nl            2002-2004
+// menno@ics.mq.edu.au        2004-
+////////////////////////////////////////////////////////////////////////////////
+// Filename: NEWS
+////////////////////////////////////////////////////////////////////////////////
+// This file is part of the suffix tree package.
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
 
-
-* [17jun2003] This is version 0.2. A generic and a concrete iterator
-  class have been added. This allows for specific operations on the
+* [07aug2007] This is version 0.3. Abstract base classes have been
+  removed, simplifying the interface.  Also, static member variables
+  have been removed, making it possible to create multiple suffixtree
+  objects.
+* [17jun2003] This is version 0.2.  A generic and a concrete iterator
+  class have been added.  This allows for specific operations on the
   suffixtree.
-* [19dec2002] This is version 0.1 (alpha). Please let me know if you
+* [19dec2002] This is version 0.1 (alpha).  Please let me know if you
   have any problems using the package or not.
 
-/* end of file: NEWS */
+// end of file: NEWS

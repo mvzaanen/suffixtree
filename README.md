@@ -27,17 +27,14 @@ nontemplate/
 Both directories essentially contain the same source files:
 iterator.h
 suffixtree.h
-suffixtree_inter.h
-suffixtree_impl.h
-suffixtree_impl.cpp
+suffixtree.cpp
 main.cpp
 The only difference is that the template directory contains source
 code of template classes, allowing suffix trees containing various
 data types in one implementation. The nontemplate directory contains
 source code of classes with a fixed container type.
 Note that the directories also contain a Makefile. This is an
-*extremely* simple file, that needs some rewriting to get it to work.
-Especially a number of explicit paths need to be changed.
+*extremely* simple file.
 
 
 # FILES
@@ -48,46 +45,31 @@ tree library can be used.
 
 suffixtree.h:
 This file contains the definition of the class suffixtree. It is this
-class that should be used in any program code. Note that the
-implementation and the interface of the suffixtree class is separated.
+class that should be used in any program code.
 
-suffixtree_inter.h:
-This file contains the suffixtree_inter class, which defines the user
-interface for the suffixtree class.
-
-suffixtree_impl.h:
-This file contains the suffixtree_impl class, which defines the
-implementation of the suffix trees.
-
-suffixtree_impl.cpp:
+suffixtree.cpp:
 This file contains the actualy implementation of the member functions
-of the suffixtree_impl class.
+of the suffixtree class.  In the template version, this file is
+included in the suffixtree.h file.  This means that when you use the
+template version, only the suffixtree.h should be included.  The
+suffixtree.cpp file does not need to be compiled and linked
+seperately.
 
 iterator.h:
-This file contains the abstract_suffixtree_iterator and
-suffixtree_iterator classes that allow safe access to the suffixtree.
+This file contains the suffixtree_iterator class that allow safe
+access to the suffixtree.
 
 # HOW TO USE
 
-The suffixtree_inter class defines the functions available on the
+The suffixtree class defines the functions available on the
 suffix tree. For users who want to use a suffix tree to search
 efficiently, these functions should be used. Each function in
-suffixtree_inter.h contains a description of its functionality.
-
-If the functionality of the suffixtree should be extended, a new class
-can be defined, that derives from the suffixtree class. Since the
-implementation (and that of the the support class, node) is protected,
-direct manipulation of the suffixtree itself can be reached.
+suffixtree.h contains a description of its functionality.
 
 The iterator classes allow walkthroughs on a fixed suffixtree (don't
 use the iterators to change the suffixtrees; I think this is not
-possible, fortunately). abstract_suffixtree_iterator is an abstract
-base class that can be used to derive concrete iterator classes.
-suffixtree_iterator is an example of a concrete iterator class. Note
-that abstract_suffixtree_iterator is a friend of the suffixtree class,
-but since derived classes are not friends, an interface to the
-internal variables is provided in the protected area. The iterator is
-implemented based on the Design Patterns book (Gamma 1995).
+possible, fortunately).  The iterator is implemented based on the
+Design Patterns book (Gamma 1995).
 
 
 # CONTACT
@@ -97,13 +79,14 @@ donate to me :), you can always contact me at the most recent email
 address found at the beginning of each file contained in the package.
 Currently:
       Menno van Zaanen
-      mvzaanen@uvt.nl
-      ILK / Computational Linguistics
-      Tilburg University
-      P.O. Box 90153
-      5000 LE Tilburg
-      The Netherlands
+      <menno@ics.mq.edu.au>
+      Division of Information and Communication Sciences (ICS)
+      Department of Computing
+      Macquarie University
+      2109 North Ryde, (Sydney), NSW
+      Australia
 
+PS: Did I already mention that you should read the LICENSE file?
 
 
 # REFERENCES
