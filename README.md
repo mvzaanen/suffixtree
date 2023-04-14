@@ -1,0 +1,2 @@
+# suffixtree
+Suffixtree implementation
