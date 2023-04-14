@@ -86,7 +86,6 @@ Currently:
       2109 North Ryde, (Sydney), NSW
       Australia
 
-PS: Did I already mention that you should read the LICENSE file?
 
 
 # REFERENCES
