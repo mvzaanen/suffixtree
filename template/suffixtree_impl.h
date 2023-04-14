@@ -30,17 +30,20 @@ namespace ns_suffixtree {
 
 class StringNotFound {}; // Exception
 
+template <class V> class abstract_suffixtree_iterator;
+
 template <class V>
 class suffixtree_impl {
+   friend class abstract_suffixtree_iterator<V>;
 public:
-   class node; // forward reference
    typedef V value_type;
    typedef typename V::size_type size_type;
    typedef typename V::value_type element_type;
    typedef typename V::const_iterator index;
-   typedef pair<node*, index> position;
 
 protected:
+   class node; // forward reference
+   typedef pair<node*, index> position;
 
    class node {
       // node is a support class for the suffixtree_impl class. Each
@@ -89,6 +92,11 @@ protected:
       // find_child finds the child node whose string begins with e.
       // A pointer to that node is returned. It returns 0 if the child
       // doesn't exist.
+      vector<element_type> next_children() const;
+
+      // find_child finds the child node whose string begins with e.
+      // A pointer to that node is returned. It returns 0 if the child
+      // doesn't exist.
       const node* find_child(const element_type& e) const;
 
       // assign_child sets val as a child of this node indexed with
@@ -100,6 +108,10 @@ protected:
       // returns all numbers that are found in these leaves. The
       // vector is unordered.
       vector<size_type> find_leaf_positions() const;
+
+      // children_size returns the number of direct children at this
+      // node.
+      const size_type children_size() const;
 
    protected:
    private:
@@ -185,6 +197,8 @@ protected:
    index e;
 private:
 };
+
+#include "suffixtree_impl.cpp"
 
 }
 #endif // __suffixtree_impl__

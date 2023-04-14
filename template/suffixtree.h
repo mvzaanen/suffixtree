@@ -23,7 +23,6 @@
 #include <map>
 #include "suffixtree_inter.h"
 #include "suffixtree_impl.h"
-#include "suffixtree_impl.cpp"
 
 using std::map;
 using std::pair;
@@ -35,7 +34,7 @@ class StringNotFound; // Exception
 
 template <class V>
 class suffixtree
-   :protected suffixtree_impl<V>,
+   :public suffixtree_impl<V>,
     public suffixtree_inter<V> {
 public:
    typedef V value_type;

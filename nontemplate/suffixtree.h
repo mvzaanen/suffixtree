@@ -35,7 +35,7 @@ namespace ns_suffixtree {
 class StringNotFound; // Exception
 
 class suffixtree
-   :protected suffixtree_impl, public suffixtree_inter {
+   :public suffixtree_impl, public suffixtree_inter {
 public:
       typedef string value_type;
       typedef value_type::size_type size_type;

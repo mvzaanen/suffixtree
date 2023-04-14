@@ -10,6 +10,9 @@
 *******************************************************************************/
 
 
+* [17jun2003] This is version 0.2. A generic and a concrete iterator
+  class have been added. This allows for specific operations on the
+  suffixtree.
 * [19dec2002] This is version 0.1 (alpha). Please let me know if you
   have any problems using the package or not.
 

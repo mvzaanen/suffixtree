@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "suffixtree_impl.h"
 
 using namespace ns_suffixtree;
@@ -120,6 +121,18 @@ suffixtree_impl::node::SEA(index b, index e, size_type level, node*&
    return sv->extend_gamma(b, e, cur, level, longest, cont);
 }
 
+vector<suffixtree_impl::element_type> 
+suffixtree_impl::node::next_children() const {
+// Collect all possible keys of this node and return them in a vector.
+   map<element_type, node *>::const_iterator i=children.begin();
+   vector<element_type> v;
+   while (i!=children.end()) {
+      v.push_back(i->first);
+      i++;
+   }
+   return v;
+}
+
 const suffixtree_impl::node*
 suffixtree_impl::node::find_child(const element_type &e) const {
 // Find the child that was indexed with e. It returns 0 if the child
@@ -151,6 +164,11 @@ suffixtree_impl::node::find_leaf_positions() const {
       result.insert(result.end(), res.begin(), res.end());
    }
    return result;
+}
+
+const suffixtree_impl::size_type
+suffixtree_impl::node::children_size() const {
+   return children.size();
 }
 
 suffixtree_impl::node::node*

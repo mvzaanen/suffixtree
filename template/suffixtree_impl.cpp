@@ -130,6 +130,21 @@ suffixtree_impl<V>::node::SEA(index b, index e, size_type level, node*&
 }
 
 export template <class V>
+vector<typename suffixtree_impl<V>::element_type>
+suffixtree_impl<V>::node::next_children() const {
+// Collect all possible keys of this node and return them in a vector.
+   typename map<typename suffixtree_impl<V>::element_type,
+      node *>::const_iterator i=children.begin();
+   vector<element_type> v;
+   while (i!=children.end()) {
+      v.push_back(i->first);
+      i++;
+   }
+   return v;
+}
+
+
+export template <class V>
 const typename suffixtree_impl<V>::node*
 suffixtree_impl<V>::node::find_child(const typename suffixtree_impl<V>::element_type &e) const {
 // Find the child that was indexed with e. It returns 0 if the child
@@ -163,6 +178,12 @@ suffixtree_impl<V>::node::find_leaf_positions() const {
       result.insert(result.end(), res.begin(), res.end());
    }
    return result;
+}
+
+export template <class V>
+const typename suffixtree_impl<V>::size_type
+suffixtree_impl<V>::node::children_size() const {
+   return children.size();
 }
 
 export template <class V>

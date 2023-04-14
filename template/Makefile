@@ -1,12 +1,10 @@
 COMPILER = g++
-DFLAGS = -ansi -pedantic -Wall -g
-#LFLAGS = -lstdc++ -Xlinker -rpath /usr/local/arch/gcc-3.2/lib
-LFLAGS = -Wl -Xlinker -rpath /usr/local/arch/gcc-3.2/lib
+DFLAGS = -ansi -pedantic -Wall -O2 -I. #-frepo
 CFLAGS = -c
 OFLAGS = -o
 EXECNAME = suffixtree
-SRCS = main.cpp
-OBJS = main.o
+SRCS = main.cpp # suffixtree_impl.cpp
+OBJS = main.o # suffixtree_impl.o
 
 suffixtree:	${OBJS}
 	${COMPILER} ${DFLAGS} ${LFLAGS} ${OBJS} ${OFLAGS} ${EXECNAME}
@@ -16,110 +14,46 @@ suffixtree:	${OBJS}
 	${COMPILER} ${DFLAGS} ${CFLAGS} $<
 
 clean: 
-	rm -f *.o 
+	rm -f *.o *.rpo
 	rm -f ${EXECNAME}
+
+veryclean:	clean
+	rm -f Makefile.bak
 
 depend:
 	makedepend \
-        -I/usr/local/arch/gcc-3.2/include/c++/3.2/ \
-        -I/usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/ \
-        -- $(CFLAGS) -- $(SRCS)
+       -I/usr/include/g++-3 \
+	-- $(CFLAGS) -- $(SRCS)
 # DO NOT DELETE
 
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/iostream
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/c++config.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/os_defines.h
+main.o: /usr/include/g++-3/iostream /usr/include/g++-3/iostream.h
+main.o: /usr/include/g++-3/streambuf.h /usr/include/libio.h
+main.o: /usr/include/_G_config.h /usr/include/bits/types.h
 main.o: /usr/include/features.h /usr/include/sys/cdefs.h
 main.o: /usr/include/gnu/stubs.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/ostream
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/ios
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/iosfwd
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stringfwd.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/fpos.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/c++io.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cstdio
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cstddef
-main.o: /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stddef.h
-main.o: /usr/include/stdio.h /usr/include/bits/types.h /usr/include/libio.h
-main.o: /usr/include/_G_config.h /usr/include/wchar.h
-main.o: /usr/include/bits/wchar.h /usr/include/gconv.h
-main.o: /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/stdarg.h
-main.o: /usr/include/bits/stdio_lim.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/gthr.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/gthr-default.h
-main.o: /usr/include/pthread.h /usr/include/sched.h /usr/include/time.h
-main.o: /usr/include/bits/sched.h /usr/include/signal.h
-main.o: /usr/include/bits/sigset.h /usr/include/bits/pthreadtypes.h
-main.o: /usr/include/bits/initspin.h /usr/include/bits/sigthread.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cwchar
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/ctime
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/functexcept.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/exception_defines.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/exception
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/char_traits.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cstring /usr/include/string.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/localefwd.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/c++locale.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/clocale /usr/include/locale.h
-main.o: /usr/include/bits/locale.h /usr/include/langinfo.h
-main.o: /usr/include/nl_types.h /usr/include/iconv.h /usr/include/libintl.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/climits /usr/include/limits.h
-main.o: /usr/lib/gcc-lib/i386-redhat-linux/2.96/include/limits.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cctype /usr/include/ctype.h
-main.o: /usr/include/endian.h /usr/include/bits/endian.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/string
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/memory
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_algobase.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cstdlib /usr/include/stdlib.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/new
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_pair.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/type_traits.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_iterator_base_types.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_iterator_base_funcs.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/concept_check.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_iterator.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_alloc.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cassert /usr/include/assert.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_threads.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_construct.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_uninitialized.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_raw_storage_iter.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_function.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/basic_string.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/atomicity.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/algorithm
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_algo.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_heap.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_tempbuf.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/basic_string.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/ios_base.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/streambuf
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/streambuf.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/basic_ios.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/streambuf_iterator.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/locale_facets.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cwctype /usr/include/wctype.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/basic_ios.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/ostream.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/locale
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/locale_facets.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cerrno /usr/include/errno.h
-main.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
-main.o: /usr/include/asm/errno.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/cmath /usr/include/math.h
-main.o: /usr/include/bits/huge_val.h /usr/include/bits/mathdef.h
-main.o: /usr/include/bits/mathcalls.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/cmath.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/limits
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/i686-pc-linux-gnu/bits/cpu_limits.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/typeinfo
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/istream
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/istream.tcc
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/vector
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_vector.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_bvector.h
-main.o: suffixtree.h /usr/local/arch/gcc-3.2/include/c++/3.2/map
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_tree.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_map.h
-main.o: /usr/local/arch/gcc-3.2/include/c++/3.2/bits/stl_multimap.h
-main.o: suffixtree_inter.h suffixtree_impl.h suffixtree_impl.cpp
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/stddef.h
+main.o: /usr/include/wchar.h /usr/include/bits/wchar.h /usr/include/gconv.h
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/stdarg.h
+main.o: /usr/include/g++-3/string /usr/include/g++-3/std/bastring.h
+main.o: /usr/include/g++-3/cstddef /usr/include/g++-3/std/straits.h
+main.o: /usr/include/g++-3/cctype /usr/include/ctype.h /usr/include/endian.h
+main.o: /usr/include/bits/endian.h /usr/include/g++-3/cstring
+main.o: /usr/include/string.h /usr/include/g++-3/alloc.h
+main.o: /usr/include/g++-3/stl_config.h /usr/include/g++-3/stl_alloc.h
+main.o: /usr/include/stdlib.h /usr/include/assert.h
+main.o: /usr/include/g++-3/iterator /usr/include/g++-3/stl_relops.h
+main.o: /usr/include/g++-3/stl_iterator.h /usr/include/g++-3/cassert
+main.o: /usr/include/g++-3/std/bastring.cc /usr/include/g++-3/vector
+main.o: /usr/include/g++-3/stl_algobase.h /usr/include/g++-3/stl_pair.h
+main.o: /usr/include/g++-3/type_traits.h /usr/include/limits.h
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/limits.h
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/new.h
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/new
+main.o: /usr/lib/gcc-lib/i386-slackware-linux/2.95.3/include/exception
+main.o: /usr/include/g++-3/stl_construct.h
+main.o: /usr/include/g++-3/stl_uninitialized.h
+main.o: /usr/include/g++-3/stl_vector.h /usr/include/g++-3/stl_bvector.h
+main.o: suffixtree.h /usr/include/g++-3/map /usr/include/g++-3/stl_tree.h
+main.o: /usr/include/g++-3/stl_function.h /usr/include/g++-3/stl_map.h
+main.o: /usr/include/g++-3/stl_multimap.h suffixtree_inter.h
+main.o: suffixtree_impl.h suffixtree_impl.cpp iterator.h

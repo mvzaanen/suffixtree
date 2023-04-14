@@ -15,6 +15,7 @@
 #include <string>
 #include <vector>
 #include "suffixtree.h"
+#include "iterator.h"
 
 using namespace std;
 using namespace ns_suffixtree;

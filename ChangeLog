@@ -1,1 +1,8 @@
+* [17jun2003] Added iterator classes (abstract_suffixtree_iterator and
+* suffixtree_iterator), which allows for operations on the suffixtree
+* without changing the interface of the suffixtree class hierarchy.
+* [31mar2003] Tested the system using g++ 3.2.1 and ld 2.12.90.0.9.
+* Templates still not work as they should. Hopefully g++ 3.3 or so
+* will improve this. I have included the suffixtree_impl.cpp in
+* suffixtree_impl.h for now.
 * [19dec2002] First release (0.1 alpha).

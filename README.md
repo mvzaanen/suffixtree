@@ -25,6 +25,7 @@ The package is divided into two directories:
 template/
 nontemplate/
 Both directories essentially contain the same source files:
+iterator.h
 suffixtree.h
 suffixtree_inter.h
 suffixtree_impl.h
@@ -62,6 +63,9 @@ suffixtree_impl.cpp:
 This file contains the actualy implementation of the member functions
 of the suffixtree_impl class.
 
+iterator.h:
+This file contains the abstract_suffixtree_iterator and
+suffixtree_iterator classes that allow safe access to the suffixtree.
 
 # HOW TO USE
 
@@ -75,22 +79,15 @@ can be defined, that derives from the suffixtree class. Since the
 implementation (and that of the the support class, node) is protected,
 direct manipulation of the suffixtree itself can be reached.
 
-
-# PROBLEMS WITH THE TEMPLATE CLASS
-
-At the moment, many c++ compilers do not have full template support.
-(At least not as nice as I hoped it to be.) Therefore, the package
-contains template and non-template versions. Both versions compile
-using gcc version 3.2, but I have problems linking the template
-version using GNU ld version 2.10.91 (with BFD 2.10.91.0.2). Please
-let me know if you manage to compile the template version using a
-repository (-frepo).
-
-http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Template-Instantiation.html
-gives an overview of different ways to handle template classes in g++.
-
-Please, let me know if you use the template version, how you managed
-to get it to work.
+The iterator classes allow walkthroughs on a fixed suffixtree (don't
+use the iterators to change the suffixtrees; I think this is not
+possible, fortunately). abstract_suffixtree_iterator is an abstract
+base class that can be used to derive concrete iterator classes.
+suffixtree_iterator is an example of a concrete iterator class. Note
+that abstract_suffixtree_iterator is a friend of the suffixtree class,
+but since derived classes are not friends, an interface to the
+internal variables is provided in the protected area. The iterator is
+implemented based on the Design Patterns book (Gamma 1995).
 
 
 # CONTACT
@@ -108,8 +105,11 @@ Currently:
       The Netherlands
 
 
+
 # REFERENCES
 
+Gamma, E., Helm, R., Johnson, R., Vlissides, J.  Design Patterns ---
+        Elements of Reusable Object-Oriented Software, 1995
 Gusfield, D.  Algorithms on strings, trees, and sequences: computer
         science and computational biology, 1997
 Ukkonen, E.  On-line construction of suffix-trees.
